@@ -1,4 +1,8 @@
 $p-color: red;
 .main {
     color: $p-color;
+    margin: 0 auto;
+    .header {
+        text-align: center;
+    }
 }
