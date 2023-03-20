@@ -1,12 +1,31 @@
 import React from "react";
 
-function ProductCategoryRow({ category }) {}
+import "../../styles/productTable.scss";
+function ProductCategoryRow({ category }) {
+  return (
+    <tr>
+      <th colSpan={2}>{category}</th>
+    </tr>
+  );
+}
 
-function ProductRow({ product }) {}
+function ProductRow({ product }) {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{ color: "red" }}>{product.name}</span>
+  );
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
+  );
+}
 
 function ProductTable({ ProductList = [] }) {
   const rows = [];
-  const lastCategory = null;
+  let lastCategory = null;
   ProductList.forEach((item) => {
     if (item.category !== lastCategory) {
       rows.push(
@@ -16,9 +35,10 @@ function ProductTable({ ProductList = [] }) {
     rows.push(<ProductRow product={item} key={item.name} />);
     lastCategory = item.category;
   });
+  console.log("rows", rows);
   return (
-    <table>
-      <thead>
+    <table className="table">
+      <thead >
         <tr>
           <th>Name</th>
           <th>Price</th>
