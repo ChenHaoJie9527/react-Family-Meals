@@ -1,3 +1,4 @@
 import Search from "./SearchBar";
+import ProductTable from "./ProductTable";
 
-export { Search };
+export { Search, ProductTable };
