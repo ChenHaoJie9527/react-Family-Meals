@@ -35,7 +35,6 @@ function ProductTable({ ProductList = [] }) {
     rows.push(<ProductRow product={item} key={item.name} />);
     lastCategory = item.category;
   });
-  console.log("rows", rows);
   return (
     <table className="table">
       <thead >

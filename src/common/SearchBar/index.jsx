@@ -1,14 +1,28 @@
 import React from "react";
 import "../../styles/searchBar.scss";
-function Search() {
+function SearchBar({ filterText, inStockOnly, setFilterText, setIstokOnly }) {
+  const onChange = (el) => {
+    const value = el.target.value;
+    setFilterText(value);
+  };
   return (
     <form className="form">
-      <input type="text" placeholder="Search..." />
+      <input
+        type="text"
+        placeholder="Search..."
+        value={filterText}
+        onChange={onChange}
+      />
       <label>
-        <input type="checkbox" /> <span>Only show product in stock</span>
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => setIstokOnly(e.target.checked)}
+        />{" "}
+        Only show products in stock
       </label>
     </form>
   );
 }
 
-export default Search;
+export default SearchBar;
