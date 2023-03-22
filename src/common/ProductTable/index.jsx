@@ -23,7 +23,7 @@ function ProductRow({ product }) {
   );
 }
 
-function ProductTable({ ProductList = [] }) {
+function ProductTable({ ProductList = [], filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
   ProductList.forEach((item) => {
@@ -35,10 +35,9 @@ function ProductTable({ ProductList = [] }) {
     rows.push(<ProductRow product={item} key={item.name} />);
     lastCategory = item.category;
   });
-  console.log("rows", rows);
   return (
     <table className="table">
-      <thead >
+      <thead>
         <tr>
           <th>Name</th>
           <th>Price</th>
