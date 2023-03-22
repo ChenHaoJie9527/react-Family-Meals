@@ -15,7 +15,11 @@ function FilterableProductTable() {
         setFilterText={setFilterText}
         setIstokOnly={setIstokOnly}
       />
-      <ProductTable ProductList={list} />
+      <ProductTable
+        ProductList={list}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
     </div>
   );
 }
