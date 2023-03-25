@@ -1,4 +1,5 @@
 import React from "react";
+import { filterProductText } from "../../hooks/filterProductText";
 
 import "../../styles/productTable.scss";
 function ProductCategoryRow({ category }) {
@@ -26,7 +27,8 @@ function ProductRow({ product }) {
 function ProductTable({ ProductList = [], filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
-  ProductList.forEach((item) => {
+  const filterList = filterProductText(filterText, ProductList);
+  filterList.forEach((item) => {
     if (item.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow category={item.category} key={item.category} />
