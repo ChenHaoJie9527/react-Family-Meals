@@ -27,7 +27,7 @@ function ProductRow({ product }) {
 function ProductTable({ ProductList = [], filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
-  const filterList = filterProductText(filterText, ProductList);
+  const filterList = filterProductText(filterText, ProductList, inStockOnly);
   filterList.forEach((item) => {
     if (item.category !== lastCategory) {
       rows.push(

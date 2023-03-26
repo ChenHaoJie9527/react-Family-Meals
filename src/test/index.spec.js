@@ -4,7 +4,10 @@ import { list } from "../mock";
 
 describe("filterProductText", () => {
   it("Search list keywords", () => {
-    const filterList = filterProductText("Apple", list);
+    const isStocked = true;
+
+    const filterList = filterProductText("Apple", list, isStocked);
+    console.log("filterList", filterList);
     expect(filterList).toEqual([
       { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
     ]);
@@ -40,6 +43,26 @@ describe("filterProductText", () => {
         price: "$4",
         stocked: false,
         name: "Pumpkin",
+      },
+      { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
+    ]);
+  });
+  it("stocked mismatch is array", () => {
+    const isStocked = true;
+    const filterList = filterProductText("", list, isStocked);
+    expect(filterList).toEqual([
+      { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
+      {
+        category: "Fruits",
+        price: "$1",
+        stocked: true,
+        name: "Dragonfruit",
+      },
+      {
+        category: "Vegetables",
+        price: "$2",
+        stocked: true,
+        name: "Spinach",
       },
       { category: "Vegetables", price: "$1", stocked: true, name: "Peas" },
     ]);
